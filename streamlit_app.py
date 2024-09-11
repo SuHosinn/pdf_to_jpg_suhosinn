@@ -25,4 +25,19 @@ st.title("PDF to JPG Converter")
 pdf_file = st.file_uploader("Upload PDF file", type=["pdf"])
 
 if pdf_file:
-    st.writ
+    st.write("Converting PDF to JPG...")
+    images = pdf_to_jpg(pdf_file)
+    
+    for img_buffer, filename in images:
+        # 이미지 표시
+        st.image(img_buffer, caption=filename)
+
+        # 다운로드 버튼
+        st.download_button(
+            label="Download " + filename,
+            data=img_buffer,
+            file_name=filename,
+            mime="image/jpeg"
+        )
+
+    st.success("Conversion complete!")
