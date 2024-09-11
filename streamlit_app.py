@@ -24,6 +24,7 @@ if pdf_file:
     for img_buffer, filename in images:
         st.image(img_buffer, caption=filename)
 
+        # 제공된 이미지 파일을 다운로드할 수 있는 버튼 추가
         st.download_button(
             label="Download " + filename,
             data=img_buffer,
